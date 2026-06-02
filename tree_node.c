@@ -2,9 +2,9 @@
 #include <string.h>
 #include "tree_node.h"
 
-TreeNode* createNode(char board[], int move, char turn) {
+TreeNode* createNode(char board[BOARD_ROWS][BOARD_COLS], int move, char turn) {
     TreeNode* node = (TreeNode*)malloc(sizeof(TreeNode));
-    memcpy(node->board, board, BOARD_SIZE);
+    memcpy(node->board, board, sizeof(node->board));
     node->move       = move;
     node->turn       = turn;
     node->childCount = 0;
