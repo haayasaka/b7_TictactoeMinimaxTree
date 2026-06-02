@@ -7,6 +7,7 @@ TreeNode* createNode(char board[BOARD_ROWS][BOARD_COLS], int move, char turn) {
     memcpy(node->board, board, sizeof(node->board));
     node->move       = move;
     node->turn       = turn;
+    node->score      = 0; // Default score
     node->childCount = 0;
     for (int i = 0; i < MAX_CHILDREN; i++) node->children[i] = NULL;
     return node;
@@ -23,4 +24,12 @@ int isLeaf(TreeNode* node) {
 
 void freeNode(TreeNode* node) {
     if (node != NULL) free(node);
+}
+
+void freeTree(TreeNode* root) {
+    if (root == NULL) return;
+    for (int i = 0; i < root->childCount; i++) {
+        freeTree(root->children[i]);
+    }
+    free(root);
 }

@@ -9,6 +9,7 @@ typedef struct TreeNode {
     char board[BOARD_ROWS][BOARD_COLS];
     int  move;
     char turn;
+    int  score; // Skor evaluasi minimax untuk node ini
 
     struct TreeNode* children[MAX_CHILDREN];
     int              childCount;
@@ -18,5 +19,6 @@ TreeNode* createNode(char board[BOARD_ROWS][BOARD_COLS], int move, char turn);
 void      addChild(TreeNode* parent, TreeNode* child);
 int       isLeaf(TreeNode* node);
 void      freeNode(TreeNode* node);
+void      freeTree(TreeNode* root); // Membebaskan memori seluruh tree
 
-#endif 
+#endif // TREE_NODE_H
