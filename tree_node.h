@@ -1,11 +1,12 @@
 #ifndef TREE_NODE_H
 #define TREE_NODE_H
 
-#define BOARD_SIZE   9
+#define BOARD_ROWS   3
+#define BOARD_COLS   3
 #define MAX_CHILDREN 9
 
 typedef struct TreeNode {
-    char board[BOARD_SIZE];
+    char board[BOARD_ROWS][BOARD_COLS];
     int  move;
     char turn;
 
@@ -13,7 +14,7 @@ typedef struct TreeNode {
     int              childCount;
 } TreeNode;
 
-TreeNode* createNode(char board[], int move, char turn);
+TreeNode* createNode(char board[BOARD_ROWS][BOARD_COLS], int move, char turn);
 void      addChild(TreeNode* parent, TreeNode* child);
 int       isLeaf(TreeNode* node);
 void      freeNode(TreeNode* node);
