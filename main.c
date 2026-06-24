@@ -19,13 +19,16 @@ int main() {
             while (getchar() != '\n');
             pos = -1;
         }
-        if (!isValidMove(board, pos))
-            printf("Posisi tidak valid atau sudah terisi. Coba lagi.\n");
-    } while (!isValidMove(board, pos));
+        if (pos < 1 || pos > 9) {
+            printf("Posisi tidak valid. Masukkan angka antara 1-9.\n");
+        } else if (!isValidMove(board, pos)) {
+            printf("Posisi sudah terisi. Silakan pilih posisi lain.\n");
+        }
+    } while (pos < 1 || pos > 9 || !isValidMove(board, pos));
 
     board[inputToRow(pos)][inputToCol(pos)] = PLAYER_X;
 
-    // Cek apakah user langsung menang setelah satu langkah (biasanya tidak)
+    // Cek apakah user menang
     if (isWin(board, PLAYER_X)) {
         printBoard(board);
         printf("Anda menang dalam satu langkah!\n");
